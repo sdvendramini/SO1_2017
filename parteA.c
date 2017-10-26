@@ -4,11 +4,10 @@
 #include <unistd.h>
 #include <pwd.h>
 #include <stdbool.h>
+#include "funciones_parteA.c"
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
-
-
 
 int main(int argc, char *argv[])
 {
@@ -21,8 +20,8 @@ int main(int argc, char *argv[])
 	
 	char host[20];
 	gethostname(host, 20);
+
 	char command[50];
-	
 	char command_exit[]="exit\n";
 
 	while(1){
@@ -32,12 +31,17 @@ int main(int argc, char *argv[])
 			//printf("%s",command);
 			//printf("%s",command_exit);
 
+		int count_command;
+		count_command = command_count(command);
+		printf("%i",count_command);
+
 		if (strcmp(command,command_exit)==0)
 		{
 			//printf("%s",command);
 			return 0;
 		}
+
+		//habria que limpiar el string command antes de volver a entrar al while
 	}
 	return 0;
-
 }
